@@ -1,0 +1,74 @@
+<UserControl 
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:PixelizetGUI.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="450"
+             x:Class="PixelizetGUI.Views.ParameterView"
+             x:DataType="vm:ParameterSelect">
+
+  <Border Background="Azure"
+      BorderBrush="Black"
+      BorderThickness="2"
+      CornerRadius="45"
+      Padding="25">
+
+    <Grid Background="CadetBlue" ShowGridLines="False" RenderOptions.BitmapInterpolationMode="HighQuality" Name="ParamScreen">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      
+      <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
+        <Border Background=""
+                ToolTip.Tip="Controls how many neighboring superpixels each given pixel will search through to find which superpixel it belongs too. Increasing Will slightly increase accuracy while reducing performance">
+          <TextBlock Text="{Binding PixelSearchDiameter, StringFormat='Pixel Associate Search Diameter: {0}'}">
+          </TextBlock>
+
+        </Border>
+        <Slider Minimum="1" Maximum="15" Value="{Binding PixelSearchDiameter}"/>
+
+        <Border Background=""
+        ToolTip.Tip="Controls how important spatial similarity is in determining pixel-To-Superpixel association. A lower value means pixels should be assigned to the superpixel most similar to its color. Higher value will result in pixles being assigned to the closest superpixels">
+          <TextBlock Text="{Binding ColorDistanceWeight, StringFormat='Color Distance Weight: {0}'}"/>
+        </Border>
+        <Slider Minimum="0" Maximum="90" Value="{Binding ColorDistanceWeight}"/>
+
+        <Border Background=""
+ToolTip.Tip="Controls how many nearby pixels bilateral filter will consider when smoothing output image. Smaller values will result in gradients looking choppy and the algorithm prioritizing potentially unimportant colors, but allows for finer detail. Higher values will make gradients smooth, but can muddy the subject of the image">
+          <TextBlock Text="{Binding BilateralDiameter, StringFormat='Bilateral Filter Diameter: {0}'}"/>
+        </Border>
+        <Slider Maximum="64" Minimum="3" Value="{Binding BilateralDiameter}"/>
+
+        <Border Background=""
+ToolTip.Tip="Controls how strongly the bilateral filter smooths output image  Smaller values will result in gradients looking choppy and the algorithm prioritizing potentially unimportant colors, but allows for finer detail. Higher values will make gradients smooth, but can muddy the subject of the image">
+          <TextBlock Text="{Binding BilateralSigma, StringFormat='Bilateral Filter Strength: {0}'}"/>
+        </Border>
+        <Slider Minimum="5" Maximum="120" Value="{Binding BilateralSigma}"/>
+
+        <Border Background=""
+ToolTip.Tip="Controls how many threads program will use to generate output image. Set this to the number of cores on your PC for the (theoretical) best performance">
+          <TextBlock Text="{Binding NumberOfThreads, StringFormat='Number of Threads: {0}'}"/>
+        </Border>
+        <Slider Maximum="32" Minimum="1" Value="{Binding NumberOfThreads}"/>
+        
+        <Border Background=""
+ToolTip.Tip="Controls how much image will be downscaled before being passed into main algorithm. If the larger image dimension is above this value then the image will be downsized to this value (keeping the same aspect ratio) before being pixelized. Can dramatically affect speed of algorithm with little difference in output">
+          <TextBlock Text="{Binding MaxLargeDimSize, StringFormat='Max Input Size: {0}'}"/>
+        </Border>
+        <Slider Maximum="2500" Minimum="500" Value="{Binding MaxLargeDimSize}"></Slider>
+     </StackPanel>
+
+     <Button Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Load_Settings"> Load Settings</Button>
+     <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Save_Settings">Save Settings</Button>
+
+    </Grid>
+  </Border>
+</UserControl>

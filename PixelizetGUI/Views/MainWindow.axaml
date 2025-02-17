@@ -1,0 +1,116 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PixelizetGUI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="608"
+        x:Class="PixelizetGUI.Views.MainWindow"
+        Icon="/Assets/PixLogo.png"
+        Title="PixelizetGUI"
+        x:DataType="vm:MainViewModel">
+
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel/>
+  </Design.DataContext>
+
+  <Border Background="Azure"
+     BorderBrush="Black"
+     BorderThickness="2"
+     CornerRadius="45"
+     Padding="25">
+
+    <Grid Background="CadetBlue" ShowGridLines="False" RenderOptions.BitmapInterpolationMode="HighQuality" Name="MainScreen">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height=""/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+
+      </Grid.RowDefinitions>
+
+      <!--Temporary-->
+
+
+
+
+
+        <StackPanel Margin="0 60" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" IsEnabled="{Binding !ShowImage, DataType={x:Type vm:MainViewModel}}" IsVisible="{Binding !ShowImage, DataType={x:Type vm:MainViewModel}}">
+          <Panel>
+            <Image Source="/Assets/Down.png"/>
+          </Panel>
+
+          <Button Margin="0 20"  Background="Gray" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Center" Click="File_Select_Click">
+            <TextBlock FontSize="19" TextWrapping="Wrap">
+              Select File
+            </TextBlock>
+          </Button>
+        </StackPanel>
+
+      <Button Height="100" Width="100" Grid.Column="2" Grid.Row="2" IsEnabled="{Binding ImageShownIsPixel, DataType={x:Type vm:MainViewModel}}" Click="Download_Image" HorizontalAlignment="Center">
+        <Image Source="avares://PixelizetGUI/Assets/Up.png"/>
+      </Button>
+
+      <Button Click="File_Select_Click" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="3" IsEnabled="{Binding ShowImage, DataType={x:Type vm:MainViewModel}}" IsVisible="{Binding ShowImage, DataType={x:Type vm:MainViewModel}}">
+          <Image Source="{Binding LargeImage, DataType={x:Type vm:MainViewModel}}}"/>
+      </Button>
+
+
+      <Panel Background="DarkCyan"  Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" >
+          <Panel Background="Red" Height="{Binding OutputHeight, DataType={x:Type vm:MainViewModel}}}" Width="{Binding OutputWidth, DataType={x:Type vm:MainViewModel}}}" IsVisible="True">
+            <Button Click="Swap_Image" IsEnabled="{Binding EnableSwitch, DataType={x:Type vm:MainViewModel}}">
+              <Image IsVisible="{Binding , DataType={x:Type vm:MainViewModel}}" Source="{Binding SmallImage, DataType={x:Type vm:MainViewModel}}" Height="{Binding OutputHeight, DataType={x:Type vm:MainViewModel}}}" Width="{Binding OutputWidth, DataType={x:Type vm:MainViewModel}}}" />
+            </Button>
+          </Panel>
+      </Panel>
+
+      <StackPanel Grid.Column="3" Grid.Row="1"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center">
+
+        <Label Name="OutputScale">
+          <TextBlock FontSize="19" TextWrapping="Wrap">
+            Output Size
+          </TextBlock>
+        </Label>
+        <ButtonSpinner  ButtonSpinnerLocation="Left" Spin="Spin_Size_Command" Content="{Binding OutputScale, DataType={x:Type vm:MainViewModel}}">
+        </ButtonSpinner>
+
+
+
+        <Label Name="Palette">
+          <TextBlock FontSize="19" TextWrapping="Wrap">
+            Palette Size
+          </TextBlock>
+        </Label>
+        <ButtonSpinner  ButtonSpinnerLocation="Left" Spin="Spin_Palette_Command" Content="{Binding PaletteSize, DataType={x:Type vm:MainViewModel}}">
+        </ButtonSpinner>
+      </StackPanel>
+
+      <Button Click="Open_Parameter_View" Width="100" Height="100" Grid.Column="4" Grid.Row="1" Background="DarkCyan" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" >
+        <TextBlock FontSize="15" TextWrapping="Wrap">
+          Advanced Settings
+        </TextBlock>
+      </Button>
+
+      <Label Name="PixelizetButton" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" IsEnabled="{Binding EnablePixelizet, DataType={x:Type vm:MainViewModel}}">
+        <Button Margin="0 20"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="SpringGreen" Click="Run_Pixelizet">
+          <TextBlock FontSize="40">
+            Pixelizet!
+          </TextBlock>
+        </Button>
+      </Label>
+    </Grid>
+
+  </Border>
+  
+  
+</Window>
