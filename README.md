@@ -39,4 +39,4 @@ Simply download the PixelizetGUI.zip from the Releases tab, extract it into its 
 
 ## 💭 Feedback and Contributing
 
-Join the feedback Discord server [here]("https://discord.gg/Fv5kDJWM")
+Join the feedback Discord server [here](https://discord.gg/Fv5kDJWM)
