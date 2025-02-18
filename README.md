@@ -3,6 +3,10 @@ An open source desktop app for creating pixel art from an image input!
 
 GUI Wrapper for [my implementation](https://github.com/Cojack622/Pixelizet) of the paper ["Pixelated image abstraction with integrated user constraints"](https://gfx.cs.princeton.edu/pubs/Gerstner_2012_PIA/Gerstner_2012_PIA_small.pdf)
 
+Currently Windows only, though compilation on Linux or MacOS shouldn't be too difficult. 
+
+
+
 ## 🌟 Highlights
 ![128by12](https://github.com/user-attachments/assets/ad854df6-e8db-4203-a3d2-c8e5d083a83a)
 
@@ -30,11 +34,9 @@ Hovering over each parameter's text will describe what it does and how changing 
 
 ## ⬇️ Installation
 
-
+Simply download the PixelizetGUI.zip from the Releases tab, extract it into its own folder, then run the PixelizetGUI executable!
 
 
 ## 💭 Feedback and Contributing
 
-Add a link to the Discussions tab in your repo and invite users to open issues for bugs/feature requests.
-
-This is also a great place to invite others to contribute in any ways that make sense for your project. Point people to your DEVELOPMENT and/or CONTRIBUTING guides if you have them.
+Join the feedback Discord server [here("https://discord.gg/Fv5kDJWM")]
