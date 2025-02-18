@@ -4,7 +4,13 @@ An open source desktop app for creating pixel art from an image input!
 GUI Wrapper for [my implementation](https://github.com/Cojack622/Pixelizet) of the paper ["Pixelated image abstraction with integrated user constraints"](https://gfx.cs.princeton.edu/pubs/Gerstner_2012_PIA/Gerstner_2012_PIA_small.pdf)
 
 ## 🌟 Highlights
+![128by12](https://github.com/user-attachments/assets/ad854df6-e8db-4203-a3d2-c8e5d083a83a)
 
+An example of pixel art generated given an input image of the painting Under the Wave off Kanagawa by Katsushika Hokusai. Generated to be a 128x86 image using 12 colors in its palette.
+
+![afghanGirlShowcase](https://github.com/user-attachments/assets/218c1e67-80b5-41ad-90ed-2a74edbb0c60)
+
+An example of how images can be generated at varying degree of size, using a photo of Sharbat Gula (commonly entitled "Afghan Girl").
 
 ### ✍️ Authors
 
